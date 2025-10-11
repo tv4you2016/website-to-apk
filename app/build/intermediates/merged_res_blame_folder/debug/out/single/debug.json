@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/mipmap_ic_launcher.png.flat",
+        "source": "com.careline.webtoapk.app-main-25:/mipmap/ic_launcher.png"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/layout_error.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/layout/error.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/xml_network_security_config.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/layout_auth_dialog.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/layout/auth_dialog.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/drawable_ic_pause.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/drawable/ic_pause.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/drawable_ic_skip_next.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/drawable/ic_skip_next.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/drawable_ic_skip_previous.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/drawable/ic_skip_previous.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/drawable_ic_play_arrow.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/drawable/ic_play_arrow.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/anim_fade_in.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/anim/fade_in.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/layout_activity_main.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/layout/activity_main.xml"
+    }
+]

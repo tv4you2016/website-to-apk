@@ -1,0 +1,254 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.careline.webtoapk"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:4:5-67
+11-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:5:5-79
+12-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:5:22-76
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+13-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:6:5-80
+13-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:6:22-77
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:7:5-81
+14-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:7:22-78
+15    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+15-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:8:5-76
+15-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:8:22-74
+16    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+16-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:9:5-77
+16-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:9:22-74
+17    <uses-permission android:name="android.permission.CAMERA" />
+17-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:10:5-65
+17-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:10:22-62
+18    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+18-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:11:5-71
+18-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:11:22-68
+19    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+19-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:12:5-80
+19-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:12:22-77
+20    <uses-permission android:name="android.permission.BLUETOOTH" />
+20-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:13:5-68
+20-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:13:22-65
+21    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+21-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:14:5-74
+21-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:14:22-71
+22
+23    <uses-feature
+23-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:16:5-84
+24        android:name="android.hardware.camera"
+24-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:16:19-57
+25        android:required="true" />
+25-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:16:58-81
+26    <uses-feature
+26-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:17:5-95
+27        android:name="android.hardware.camera.autofocus"
+27-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:17:19-67
+28        android:required="false" />
+28-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:17:68-92
+29
+30    <permission
+30-->[androidx.core:core:1.9.0] C:\Users\Asus\.gradle\caches\transforms-3\c6770eda00af6c105866b6db09ea3053\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+31        android:name="com.careline.webtoapk.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+31-->[androidx.core:core:1.9.0] C:\Users\Asus\.gradle\caches\transforms-3\c6770eda00af6c105866b6db09ea3053\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+32        android:protectionLevel="signature" />
+32-->[androidx.core:core:1.9.0] C:\Users\Asus\.gradle\caches\transforms-3\c6770eda00af6c105866b6db09ea3053\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+33
+34    <uses-permission android:name="com.careline.webtoapk.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+34-->[androidx.core:core:1.9.0] C:\Users\Asus\.gradle\caches\transforms-3\c6770eda00af6c105866b6db09ea3053\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+34-->[androidx.core:core:1.9.0] C:\Users\Asus\.gradle\caches\transforms-3\c6770eda00af6c105866b6db09ea3053\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+35    <uses-permission android:name="android.permission.WAKE_LOCK" />
+35-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:8:5-68
+35-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:8:22-65
+36
+37    <queries>
+37-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:10:5-20:15
+38        <intent>
+38-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:11:9-13:18
+39            <action android:name="org.unifiedpush.android.distributor.LINK" />
+39-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:12:13-79
+39-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:12:21-76
+40        </intent>
+41        <intent>
+41-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:14:9-16:18
+42            <action android:name="org.unifiedpush.android.distributor.REGISTER" />
+42-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:15:13-83
+42-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:15:21-80
+43        </intent>
+44        <intent>
+44-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:17:9-19:18
+45            <action android:name="org.unifiedpush.android.distributor.UNREGISTER" />
+45-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:18:13-85
+45-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:18:21-82
+46        </intent>
+47    </queries>
+48
+49    <application
+49-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:20:5-58:19
+50        android:allowBackup="true"
+50-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:21:9-35
+51        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+51-->[androidx.core:core:1.9.0] C:\Users\Asus\.gradle\caches\transforms-3\c6770eda00af6c105866b6db09ea3053\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+52        android:debuggable="true"
+53        android:extractNativeLibs="false"
+54        android:icon="@mipmap/ic_launcher"
+54-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:22:9-43
+55        android:label="@string/app_name"
+55-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:23:9-41
+56        android:supportsRtl="true"
+56-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:24:9-35
+57        android:testOnly="true"
+58        android:theme="@style/AppTheme.NoTitleBar"
+58-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:25:9-51
+59        android:usesCleartextTraffic="true" >
+59-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:26:9-44
+60        <activity
+60-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:28:9-46:20
+61            android:name="com.careline.webtoapk.MainActivity"
+61-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:30:13-41
+62            android:configChanges="uiMode|orientation|screenSize|keyboard|keyboardHidden"
+62-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:33:13-90
+63            android:exported="true"
+63-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:31:13-36
+64            android:hardwareAccelerated="true"
+64-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:29:13-47
+65            android:launchMode="singleTop" >
+65-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:32:13-43
+66            <intent-filter>
+66-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:34:13-37:29
+67                <action android:name="android.intent.action.MAIN" />
+67-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:35:17-69
+67-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:35:25-66
+68
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:36:17-77
+69-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:36:27-74
+70            </intent-filter>
+71            <intent-filter>
+71-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:38:13-45:29
+72                <action android:name="android.intent.action.VIEW" />
+72-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:39:17-69
+72-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:39:25-66
+73
+74                <category android:name="android.intent.category.DEFAULT" />
+74-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:40:17-76
+74-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:40:27-73
+75                <category android:name="android.intent.category.BROWSABLE" />
+75-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:41:17-78
+75-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:41:27-75
+76
+77                <data android:scheme="http" />
+77-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:42:17-47
+77-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:42:23-44
+78                <data android:scheme="https" />
+78-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:42:17-47
+78-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:42:23-44
+79                <data android:host="careline.com" />
+79-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:42:17-47
+79-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:44:23-50
+80            </intent-filter>
+81        </activity>
+82
+83        <service
+83-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:48:9-53:19
+84            android:name="com.careline.webtoapk.PushServiceImpl"
+84-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:48:18-49
+85            android:exported="false" >
+85-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:49:13-37
+86            <intent-filter>
+86-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:50:13-52:29
+87                <action android:name="org.unifiedpush.android.connector.PUSH_EVENT" />
+87-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:51:17-86
+87-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:51:25-84
+88            </intent-filter>
+89        </service>
+90        <service
+90-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:54:9-57:61
+91            android:name="com.careline.webtoapk.MediaPlaybackService"
+91-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:55:13-49
+92            android:exported="false"
+92-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:56:13-37
+93            android:foregroundServiceType="mediaPlayback" />
+93-->D:\Github\website-to-apk\app\src\main\AndroidManifest.xml:57:13-58
+94
+95        <provider
+95-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Asus\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+96            android:name="androidx.startup.InitializationProvider"
+96-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Asus\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+97            android:authorities="com.careline.webtoapk.androidx-startup"
+97-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Asus\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+98            android:exported="false" >
+98-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Asus\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+99            <meta-data
+99-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Asus\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+100                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+100-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Asus\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+101                android:value="androidx.startup" />
+101-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Asus\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+102            <meta-data
+102-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Asus\.gradle\caches\transforms-3\e49fb580d7eda2494a8100e094041989\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+103                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+103-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Asus\.gradle\caches\transforms-3\e49fb580d7eda2494a8100e094041989\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+104                android:value="androidx.startup" />
+104-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Asus\.gradle\caches\transforms-3\e49fb580d7eda2494a8100e094041989\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+105        </provider>
+106
+107        <service
+107-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:23:9-30:19
+108            android:name="org.unifiedpush.android.connector.internal.RaiseToForegroundService"
+108-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:24:13-95
+109            android:exported="true" >
+109-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:25:13-36
+110            <intent-filter>
+110-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:27:13-29:29
+111                <action android:name="org.unifiedpush.android.connector.RAISE_TO_FOREGROUND" />
+111-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:28:17-96
+111-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:28:25-93
+112            </intent-filter>
+113        </service>
+114
+115        <activity
+115-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:32:9-34:86
+116            android:name="org.unifiedpush.android.connector.internal.LinkActivity"
+116-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:33:13-83
+117            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+117-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:34:13-83
+118
+119        <receiver
+119-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:36:9-47:20
+120            android:name="org.unifiedpush.android.connector.internal.MessagingReceiverImpl"
+120-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:37:13-92
+121            android:enabled="true"
+121-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:38:13-35
+122            android:exported="true" >
+122-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:39:13-36
+123            <intent-filter android:priority="-500" >
+123-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:41:13-46:29
+123-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:41:28-51
+124                <action android:name="org.unifiedpush.android.connector.MESSAGE" />
+124-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:42:17-84
+124-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:42:25-81
+125                <action android:name="org.unifiedpush.android.connector.UNREGISTERED" />
+125-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:43:17-89
+125-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:43:25-86
+126                <action android:name="org.unifiedpush.android.connector.NEW_ENDPOINT" />
+126-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:44:17-89
+126-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:44:25-86
+127                <action android:name="org.unifiedpush.android.connector.REGISTRATION_FAILED" />
+127-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:45:17-96
+127-->[org.unifiedpush.android:connector:3.0.10] C:\Users\Asus\.gradle\caches\transforms-3\19a9702ad531fe62d2ba65f9474a383e\transformed\jetified-connector-3.0.10\AndroidManifest.xml:45:25-93
+128            </intent-filter>
+129        </receiver>
+130    </application>
+131
+132</manifest>

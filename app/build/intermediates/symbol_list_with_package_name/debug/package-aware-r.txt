@@ -626,6 +626,8 @@ drawable btn_radio_on_to_off_mtrl_animation
 drawable ic_call
 drawable ic_cam_off
 drawable ic_cam_on
+drawable ic_change_camera
+drawable ic_mic_off
 drawable ic_mic_on
 drawable ic_pause
 drawable ic_play_arrow
@@ -713,6 +715,7 @@ id beginning
 id blocking
 id bottom
 id btn_camera
+id btn_change_camera
 id btn_hang_up
 id btn_micro
 id button

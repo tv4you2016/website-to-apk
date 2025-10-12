@@ -48,6 +48,16 @@
             android:scaleType="fitCenter"
             app:tint="@android:color/white" />
 
+        <ImageButton
+            android:id="@+id/btn_change_camera"
+            style="@style/TvControlButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_change_camera"
+            android:background="@drawable/bg_tv_button"
+            android:scaleType="fitCenter"
+            app:tint="@android:color/white" />
 
         <ImageButton
             android:id="@+id/btn_micro"

@@ -625,6 +625,8 @@ int drawable btn_radio_on_to_off_mtrl_animation 0x7f070057
 int drawable ic_call 0x7f070058
 int drawable ic_cam_off 0x7f070059
 int drawable ic_cam_on 0x7f07005a
+int drawable ic_change_camera 0x7f070070
+int drawable ic_mic_off 0x7f07006f
 int drawable ic_mic_on 0x7f07005b
 int drawable ic_pause 0x7f07005c
 int drawable ic_play_arrow 0x7f07005d
@@ -712,6 +714,7 @@ int id beginning 0x7f08003f
 int id blocking 0x7f080040
 int id bottom 0x7f080041
 int id btn_camera 0x7f080042
+int id btn_change_camera 0x7f0800c2
 int id btn_hang_up 0x7f080043
 int id btn_micro 0x7f080044
 int id button 0x7f080045

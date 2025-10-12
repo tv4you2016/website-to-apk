@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebChromeClient;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.os.Handler;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mediaActionReceiver;
 
     //String mainURL = "https://usually.in/";
-    String mainURL = "https://iotmediasoup.ddns.net/";
+    String mainURL = "https://iotmediasoup.ddns.net/?roomId=mq6fp3lt";
     boolean requireDoubleBackToExit = true;
     boolean allowSubdomains = true;
 
@@ -397,9 +398,147 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         LocalBroadcastManager.getInstance(this).registerReceiver(mediaActionReceiver, new IntentFilter(MediaPlaybackService.BROADCAST_MEDIA_ACTION));
+
+
+        ///  btn Camera /on/off
+        ImageButton btnCamera = findViewById(R.id.btn_camera);
+        btnCamera.requestFocus();
+
+        btnCamera.setOnClickListener(v -> {
+            String js = "javascript:(function() {" +
+                    "  var div = document.querySelector('div.button.webcam.on, div.button.webcam.off');" +
+                    "  if(div) {" +
+                    "    div.click();" +
+                    "    if (div.classList.contains('on')) return 'on';" +
+                    "    else if (div.classList.contains('off')) return 'off';" +
+                    "    else return 'unknown';" +
+                    "  } else {" +
+                    "    return 'not_found';" +
+                    "  }" +
+                    "})()";
+
+            webview.evaluateJavascript(js, result -> {
+                // Remove aspas da string JSON retornada
+                if (result != null) result = result.replace("\"", "");
+
+                switch (result) {
+                    case "on":
+                        Log.d("WebView", "Webcam estava ON, cliquei para desligar.");
+                        videoMute(true);
+                        break;
+                    case "off":
+                        Log.d("WebView", "Webcam estava OFF, cliquei para ligar.");
+                        videoMute(false);
+                        break;
+                    case "not_found":
+                        Log.w("WebView", "Elemento não encontrado.");
+                        break;
+                    default:
+                        Log.w("WebView", "Estado desconhecido: " + result);
+                        break;
+                }
+            });
+        });
+
+        ///  btn micro /on/off
+
+        ImageButton btnMicro = findViewById(R.id.btn_micro);
+        btnMicro.requestFocus();
+
+        btnMicro.setOnClickListener(v -> {
+            String js = "javascript:(function() {" +
+                    "  var div = document.querySelector('div.button.mic.on, div.button.mic.off');" +
+                    "  if(div) {" +
+                    "    div.click();" +
+                    "    if (div.classList.contains('on')) return 'on';" +
+                    "    else if (div.classList.contains('off')) return 'off';" +
+                    "    else return 'unknown';" +
+                    "  } else {" +
+                    "    return 'not_found';" +
+                    "  }" +
+                    "})()";
+
+            webview.evaluateJavascript(js, result -> {
+                // Remove aspas da string JSON retornada
+                if (result != null) result = result.replace("\"", "");
+
+                switch (result) {
+                    case "on":
+                        Log.d("WebView", "Micro  estava ON, cliquei para desligar.");
+                        audioMute(true);
+                        break;
+                    case "off":
+                        Log.d("WebView", "Micro estava OFF, cliquei para ligar.");
+                        audioMute(false);
+                        break;
+                    case "not_found":
+                        Log.w("WebView", "Micro não encontrado.");
+                        break;
+                    default:
+                        Log.w("WebView", "Micro desconhecido: " + result);
+                        break;
+                }
+            });
+        });
+
+
+        ///  btn Camera change
+        ImageButton btnCahngeCamera = findViewById(R.id.btn_change_camera);
+        btnCahngeCamera.requestFocus();
+
+        btnCahngeCamera.setOnClickListener(v -> {
+            String js = "javascript:(function() {" +
+                    "  var div = document.querySelector('div.button.change-webcam.on');" +
+                    "  if(div) {" +
+                    "    div.click();" +
+                    "    return 'on';" +
+                    "  } else {" +
+                    "    return 'not_found';" +
+                    "  }" +
+                    "})()";
+
+            webview.evaluateJavascript(js, result -> {
+                // Remove aspas da string JSON retornada
+                if (result != null) result = result.replace("\"", "");
+
+                switch (result) {
+                    case "on":
+                        Log.d("WebView", "Change Webcam");
+
+                        break;
+                    case "not_found":
+                        Log.w("WebView", "Elemento não encontrado.");
+                        break;
+                    default:
+                        Log.w("WebView", "Estado desconhecido: " + result);
+                        break;
+                }
+            });
+        });
+
+
+
     }
 
+    private void audioMute(boolean muted) {
+        ImageButton btnMicro = findViewById(R.id.btn_micro);
+        if (muted) {
+            btnMicro.setImageResource(R.drawable.ic_mic_off) ;// ícone quando vídeo está desativado
+        } else {
+            btnMicro.setImageResource(R.drawable.ic_mic_on); // ícone quando vídeo está ativado
+        }
 
+
+    }
+
+    private void videoMute(boolean muted) {
+        ImageButton btnCamera = findViewById(R.id.btn_camera);
+        if (muted) {
+            btnCamera.setImageResource(R.drawable.ic_cam_off);
+        } else {
+            btnCamera.setImageResource(R.drawable.ic_cam_on);
+        }
+    }
 
 
         private void requestPermissions() {

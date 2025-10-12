@@ -37,6 +37,7 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebResourceError;
 import androidx.annotation.Nullable;
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.webkit.JavascriptInterface;
@@ -78,12 +79,11 @@ import androidx.annotation.NonNull;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.graphics.Color;
 import androidx.core.graphics.Insets;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Objects;
-import android.provider.Settings;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 
 public class MainActivity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -105,14 +105,14 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver unifiedPushEndpointReceiver;
     private BroadcastReceiver mediaActionReceiver;
 
-    //String mainURL = "https://usually.in/zmntknkg";
+    //String mainURL = "https://usually.in/";
     String mainURL = "https://iotmediasoup.ddns.net/";
     boolean requireDoubleBackToExit = true;
     boolean allowSubdomains = true;
 
     boolean enableExternalLinks = true;
     boolean openExternalLinksInBrowser = true;
-    boolean confirmOpenInBrowser = false;
+    boolean confirmOpenInBrowser = true;
 
     boolean allowOpenMobileApp = false;
     boolean confirmOpenExternalApp = true;
@@ -137,10 +137,9 @@ public class MainActivity extends AppCompatActivity {
 
     boolean geolocationEnabled = false;
 
+    private static final int PERMISSION_REQUEST_CODE = 100;
 
-    private static final int MEDIA_PERMISSION_REQUEST_CODE = 3;
-
-
+    private  Bundle mysavedInstanceState = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,23 +151,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         super.onCreate(savedInstanceState);
+        mysavedInstanceState = savedInstanceState;
 
+        // Solicitar permissões primeiro
+        requestPermissions();
+    }
+
+    private void setupWebView() {
         if (edgeToEdge) {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
             getWindow().setNavigationBarColor(Color.TRANSPARENT);
         }
-
-
-        // Request camera and mic permissions
-        String[] mediaPermissions = {
-                Manifest.permission.CAMERA,
-                Manifest.permission.RECORD_AUDIO
-        };
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, mediaPermissions, MEDIA_PERMISSION_REQUEST_CODE);
-        }
-
 
         // Create the NotificationChannel, but only on API 26+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -215,19 +208,10 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setDomStorageEnabled(DomStorageEnabled);
         webSettings.setDatabaseEnabled(DatabaseEnabled);
         webSettings.setMediaPlaybackRequiresUserGesture(MediaPlaybackRequiresUserGesture);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            webSettings.setMediaPlaybackRequiresUserGesture(false);  // Permite autoplay de mídia
-        }
         webSettings.setSavePassword(SavePassword);
         webSettings.setAllowFileAccess(AllowFileAccess);
         webSettings.setAllowFileAccessFromFileURLs(AllowFileAccessFromFileURLs);
         webview.setWebContentsDebuggingEnabled(DebugWebView);
-        webSettings.setAllowContentAccess(true); // Para acessar arquivos/mídia local
-        webSettings.setAllowUniversalAccessFromFileURLs(true);  // Para acesso cross-origin em mídia local
-
-
-
-
 
         if (!userAgent.isEmpty()) {
             webSettings.setUserAgentString(userAgent);
@@ -393,9 +377,9 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        if (savedInstanceState != null) {
+        if (mysavedInstanceState != null) {
             // Restore the state of the WebView from the saved bundle.
-            webview.restoreState(savedInstanceState);
+            webview.restoreState(mysavedInstanceState);
         } else {
             // It's a fresh launch. Load the main URL.
             webview.loadUrl(mainURL);
@@ -415,78 +399,31 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(mediaActionReceiver, new IntentFilter(MediaPlaybackService.BROADCAST_MEDIA_ACTION));
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MEDIA_PERMISSION_REQUEST_CODE) {
-            boolean cameraGranted = false;
-            boolean micGranted = false;
 
-            // Checa cada permissão individualmente
-            for (int i = 0; i < permissions.length; i++) {
-                if (permissions[i].equals(Manifest.permission.CAMERA)) {
-                    cameraGranted = grantResults[i] == PackageManager.PERMISSION_GRANTED;
-                } else if (permissions[i].equals(Manifest.permission.RECORD_AUDIO)) {
-                    micGranted = grantResults[i] == PackageManager.PERMISSION_GRANTED;
-                }
-            }
 
-            String message = "";
-            if (cameraGranted && micGranted) {
-                Log.d("WebToApk", "Camera and mic permissions granted.");
-                message = "Camera and microphone access granted. Video features enabled.";
-                if (webview != null && !Objects.requireNonNull(webview.getUrl()).isEmpty()) {  // Avoid reload on initial load
-                    webview.evaluateJavascript("if (typeof window.onPermissionsGranted === 'function') { window.onPermissionsGranted(); }", null);
 
-                    webview.reload();
-                }
+        private void requestPermissions() {
+        String[] permissions = {
+                Manifest.permission.CAMERA,
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.MODIFY_AUDIO_SETTINGS
+        };
 
-            } else {
-                Log.w("WebToApk", "Partial denial: Camera=" + (cameraGranted ? "granted" : "denied") +
-                        ", Mic=" + (micGranted ? "granted" : "denied"));
-                if (!cameraGranted && !micGranted) {
-                    message = "Camera and microphone access denied. Video/audio features won't work.";
-                } else if (!cameraGranted) {
-                    message = "Camera denied, but microphone granted. Video won't work, but audio will.";
-                } else {
-                    message = "Microphone denied, but camera granted. Audio won't work, but video will.";
-                }
-                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-
-                // Opcional: Guie o usuário para Settings se negado
-                if (!cameraGranted || !micGranted) {
-                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                        new AlertDialog.Builder(this)
-                                .setTitle("Permissions Needed")
-                                .setMessage("Go to Settings > Apps > " + getString(R.string.app_name) + " > Permissions to enable camera/mic.")
-                                .setPositiveButton("Open Settings", (dialog, which) -> {
-                                    Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                    intent.setData(Uri.parse("package:" + getPackageName()));
-                                    startActivity(intent);
-                                })
-                                .setNegativeButton("Cancel", null)
-                                .show();
-                    }, 1000);
-                }
-            }
-        } else if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.d("WebToApk", "Location permission granted.");
-                // Optionally reload WebView or notify JS
-            } else {
-                Toast.makeText(this, "Location access denied. Geolocation features won't work.", Toast.LENGTH_LONG).show();
-            }
-        } else if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.d("WebToApk", "Notification permission granted.");
-            } else {
-                Toast.makeText(this, "Notifications denied. Push features may not work.", Toast.LENGTH_LONG).show();
-            }
+        if (hasPermissions(permissions)) {
+            setupWebView();
+        } else {
+            ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
         }
     }
 
-
-
+    private boolean hasPermissions(String[] permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
     private void registerForUnifiedPush(final String vapidPublicKey) {
         if (vapidPublicKey == null || vapidPublicKey.isEmpty()) {
             Log.e("WebToApk", "VAPID public key is null or empty. Cannot register for push.");
@@ -554,6 +491,35 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         webview.saveState(outState);
     }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            boolean allGranted = true;
+            for (int res : grantResults) {
+                if (res != PackageManager.PERMISSION_GRANTED) {
+                    allGranted = false;
+                    break;
+                }
+            }
+            if (allGranted) {
+                setupWebView();
+            } else {
+                // Informa usuário que precisa permitir para usar micro/cam
+                Toast.makeText(this, "Permissão de câmera/áudio é necessária", Toast.LENGTH_LONG).show();
+                // Você pode sair ou restringir funcionalidades
+            }
+        }
+    }
+
+
+
+
+
+
 
     /* This allows:
         Remove "Confirm URL" title from js log/alert/dialog/confirm
@@ -653,8 +619,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-
-
         @Override
         public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
             // Automatically grant permission for geolocation requests
@@ -662,38 +626,31 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onPermissionRequest(PermissionRequest request) {
-            Log.d("WebToApk", "Permission request: " + Arrays.toString(request.getResources()));
-            boolean cameraGranted = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
-            boolean micGranted = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
-            List<String> grantedList = new ArrayList<>();
-            for (String resource : request.getResources()) {
-                if (resource.equals(PermissionRequest.RESOURCE_VIDEO_CAPTURE) && cameraGranted) {
-                    grantedList.add(resource);
-                } else if (resource.equals(PermissionRequest.RESOURCE_AUDIO_CAPTURE) && micGranted) {
-                    grantedList.add(resource);
+        public void onPermissionRequest(final PermissionRequest request) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    String[] requestedResources = request.getResources();
+                    ArrayList<String> granted = new ArrayList<>();
+
+                    for (String res : requestedResources) {
+                        if (res.equals(PermissionRequest.RESOURCE_VIDEO_CAPTURE) &&
+                                ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                            granted.add(PermissionRequest.RESOURCE_VIDEO_CAPTURE);
+                        }
+                        if (res.equals(PermissionRequest.RESOURCE_AUDIO_CAPTURE) &&
+                                ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                            granted.add(PermissionRequest.RESOURCE_AUDIO_CAPTURE);
+                        }
+                    }
+
+                    if (!granted.isEmpty()) {
+                        request.grant(granted.toArray(new String[granted.size()]));
+                    } else {
+                        request.deny();
+                    }
                 }
-            }
-            if (!grantedList.isEmpty()) {
-                request.grant(grantedList.toArray(new String[0]));
-                Log.d("WebToApk", "Granted: " + Arrays.toString(grantedList.toArray()));
-            } else {
-                request.deny();
-                Log.w("WebToApk", "Denied all - camera: " + cameraGranted + ", mic: " + micGranted);
-                // Melhore o Toast com ação
-                new Handler(Looper.getMainLooper()).post(() -> {
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Câmera Necessária")
-                            .setMessage("Ative a câmera nas configurações do app para vídeo.")
-                            .setPositiveButton("Abrir Configurações", (d, w) -> {
-                                Intent i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                i.setData(Uri.parse("package:" + getPackageName()));
-                                startActivity(i);
-                            })
-                            .setNegativeButton("Cancelar", null)
-                            .show();
-                });
-            }
+            });
         }
 
 
@@ -988,7 +945,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageStarted(WebView webview, String url, Bitmap favicon) {
             super.onPageStarted(webview, url, favicon);
-            //userScriptManager.injectScripts(webview, url);
+            userScriptManager.injectScripts(webview, url);
         }
 
         // Animation on app open
@@ -1049,8 +1006,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
-
     }
 
     boolean doubleBackToExitPressedOnce = false;
@@ -1095,23 +1050,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @JavascriptInterface
-        public boolean isCameraSupported() {
-            return ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
-                    getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
-        }
-
-        @JavascriptInterface
-        public void retryCameraAccess() {
-            // Re-peça permissões se negadas
-            if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, MEDIA_PERMISSION_REQUEST_CODE);
-            } else {
-                // Se já concedido, recarregue ou notifique
-                ((MainActivity) context).webview.reload();
-            }
-        }
-
-        @JavascriptInterface
         public void showShortToast(String message) {
             Handler mainHandler = new Handler(Looper.getMainLooper());
             mainHandler.post(new Runnable() {
@@ -1130,14 +1068,6 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 }
-            });
-        }
-
-        @JavascriptInterface
-        public void requestMediaPermissionsAgain() {
-            new Handler(Looper.getMainLooper()).post(() -> {
-                String[] mediaPermissions = {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO};
-                ActivityCompat.requestPermissions((Activity) context, mediaPermissions, MEDIA_PERMISSION_REQUEST_CODE);
             });
         }
 

@@ -139,7 +139,7 @@ public class UserScriptManager {
         }
     }
 
-/*
+
     public void injectScripts(WebView webview, String url) {
         String helpersJs = readAssetFile("helpers.js");
         webview.evaluateJavascript(helpersJs, null);
@@ -181,7 +181,5 @@ public class UserScriptManager {
             }
         }
     }
-
-
- */
+    
 }

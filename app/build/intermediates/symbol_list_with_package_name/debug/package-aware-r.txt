@@ -614,6 +614,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable bg_tv_button
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -622,6 +623,10 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable ic_call
+drawable ic_cam_off
+drawable ic_cam_on
+drawable ic_mic_on
 drawable ic_pause
 drawable ic_play_arrow
 drawable ic_skip_next
@@ -707,6 +712,9 @@ id async
 id beginning
 id blocking
 id bottom
+id btn_camera
+id btn_hang_up
+id btn_micro
 id button
 id button1
 id buttonPanel
@@ -766,6 +774,7 @@ id progress_horizontal
 id radio
 id right_icon
 id right_side
+id root_layout
 id screen
 id scrollIndicatorDown
 id scrollIndicatorUp
@@ -1221,6 +1230,7 @@ style ThemeOverlay_AppCompat_DayNight_ActionBar
 style ThemeOverlay_AppCompat_Dialog
 style ThemeOverlay_AppCompat_Dialog_Alert
 style ThemeOverlay_AppCompat_Light
+style TvControlButton
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
 style Widget_AppCompat_ActionBar_TabBar

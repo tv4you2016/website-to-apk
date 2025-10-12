@@ -74,24 +74,31 @@
     }
   }
 
+
+
   // ========== LISTA DE ELEMENTOS A ESCONDER OU REMOVER ==========
+    waitForElement('.room-link', 'hide'); // esconder
+
 
   waitForElement('.controls', 'hide'); // esconder
 
- // waitForElement('.room-link', 'hide'); // esconder
- // waitForElement('#mediasoup-demo-app-container > div > div.me-container > div > div:nth-child(1) > div.info > div.peer.is-me > span', 'remove'); // remover
+  waitForElement('.room-link', 'hide'); // esconder
+  waitForElement('#mediasoup-demo-app-container > div > div.me-container > div > div:nth-child(1) > div.info > div.peer.is-me > span', 'remove'); // remover
 
 
-  //waitForElement('#mediasoup-demo-app-container > div > div.me-container> div > div.controls', 'remove'); // remover Controls  Step1
+ //waitForElement('#mediasoup-demo-app-container > div > div.me-container> div > div.controls', 'remove'); // remover Controls  Step1
   //waitForElement('#mediasoup-demo-app-container > div > div.me-container.active-speaker > div > div.controls', 'remove'); // remover Controls // remover Controls  Step2
 
+
   waitForElement('#mediasoup-demo-app-container > div > div.me-container > div > div:nth-child(1) > div.info', 'remove'); // remover info
+
   waitForElement('#mediasoup-demo-app-container > div > div.chat-input-container', 'remove'); // remover chat
   waitForElement('#mediasoup-demo-app-container > div > div:nth-child(1)', 'remove'); // remover  Notifications
   waitForElement('#mediasoup-demo-app-container > div > div.room-link-wrapper', 'remove'); // remover  invitation link
   waitForElement('#mediasoup-demo-app-container > div > div.sidebar', 'remove'); // remover  sidebar
   waitForElement('#mediasoup-demo-app-container > div > div:nth-child(5)', 'remove'); // remover  Stats
   waitForElement('#mediasoup-demo-app-container > div > div.__react_component_tooltip.place-top.type-dark.allow_hover', 'remove'); // remover  Stats
-  waitForElement('[data-id="tooltip"]', 'remove'); // <- aqui está o novo
 
+  waitForElement('[data-id="tooltip"]', 'remove'); // <- aqui está o novo
+  waitForElement('#mediasoup-demo-app-container > div > div:nth-child(3) > div > div > div:nth-child(2) > div.info','hide'  );
 })();

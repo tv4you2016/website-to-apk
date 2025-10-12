@@ -71,6 +71,17 @@
             android:scaleType="fitCenter"/>
 
         <ImageButton
+            android:id="@+id/btn_change_micro"
+            style="@style/TvControlButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_change_micro"
+            android:background="@drawable/bg_tv_button"
+            android:scaleType="fitCenter"
+            app:tint="@android:color/white" />
+
+        <ImageButton
             android:id="@+id/btn_hang_up"
             style="@style/TvControlButton"
             android:layout_width="0dp"

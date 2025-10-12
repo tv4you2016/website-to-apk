@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable_ic_mic_on.xml.flat",
-        "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\drawable\\ic_mic_on.xml"
-    },
-    {
         "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable_bg_tv_button.xml.flat",
         "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\drawable\\bg_tv_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable_ic_mic_on.xml.flat",
+        "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\drawable\\ic_mic_on.xml"
     },
     {
         "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\layout_auth_dialog.xml.flat",
@@ -28,10 +28,6 @@
         "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.careline.webtoapk.app-merged_res-23:/layout_activity_main.xml.flat",
-        "source": "com.careline.webtoapk.app-main-25:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\mipmap_ic_launcher.png.flat",
         "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\mipmap\\ic_launcher.png"
     },
@@ -44,8 +40,16 @@
         "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\layout\\error.xml"
     },
     {
+        "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable-mic_ic_change_micro.xml.flat",
+        "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\drawable-mic\\ic_change_micro.xml"
+    },
+    {
         "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable_ic_skip_previous.xml.flat",
         "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\drawable\\ic_skip_previous.xml"
+    },
+    {
+        "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable_ic_change_micro.xml.flat",
+        "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\drawable\\ic_change_micro.xml"
     },
     {
         "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable_ic_cam_on.xml.flat",
@@ -70,5 +74,9 @@
     {
         "merged": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-merged_res-23:\\drawable_ic_change_camera.xml.flat",
         "source": "C:\\Users\\Asus\\.gradle\\daemon\\7.4\\com.careline.webtoapk.app-main-25:\\drawable\\ic_change_camera.xml"
+    },
+    {
+        "merged": "com.careline.webtoapk.app-merged_res-23:/drawable_ic_change_micro.xml.flat",
+        "source": "com.careline.webtoapk.app-main-25:/drawable/ic_change_micro.xml"
     }
 ]

@@ -518,6 +518,43 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    ///  bnt MIC change
+
+        ImageButton btnCahngeMic = findViewById(R.id.btn_change_micro);
+        btnCahngeMic.requestFocus();
+
+        btnCahngeMic.setOnClickListener(v -> {
+            String js = "javascript:(function() {" +
+                    "  var div = document.querySelector('div.button.change-mic.on');" +
+                    "  if(div) {" +
+                    "    div.click();" +
+                    "    return 'on';" +
+                    "  } else {" +
+                    "    return 'not_found';" +
+                    "  }" +
+                    "})()";
+
+            webview.evaluateJavascript(js, result -> {
+                // Remove aspas da string JSON retornada
+                if (result != null) result = result.replace("\"", "");
+
+                switch (result) {
+                    case "on":
+                        Log.d("WebView", "Change Webcam");
+
+                        break;
+                    case "not_found":
+                        Log.w("WebView", "Elemento não encontrado.");
+                        break;
+                    default:
+                        Log.w("WebView", "Estado desconhecido: " + result);
+                        break;
+                }
+            });
+        });
+
+
+
     }
 
     private void audioMute(boolean muted) {

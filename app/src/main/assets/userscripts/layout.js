@@ -77,7 +77,10 @@
 
 
   // ========== LISTA DE ELEMENTOS A ESCONDER OU REMOVER ==========
-    waitForElement('.room-link', 'hide'); // esconder
+  waitForElement('.room-link', 'hide'); // esconder
+  waitForElement('#mediasoup-demo-app-container > div > div.info > p:nth-child(1)', 'hide'); // esconder
+  waitForElement('#mediasoup-demo-app-container > div > div.info > p:nth-child(2)', 'hide'); // esconder
+  waitForElement('#mediasoup-demo-app-container > div > div.info > p:nth-child(3)', 'hide'); // esconder
 
 
   waitForElement('.controls', 'hide'); // esconder
